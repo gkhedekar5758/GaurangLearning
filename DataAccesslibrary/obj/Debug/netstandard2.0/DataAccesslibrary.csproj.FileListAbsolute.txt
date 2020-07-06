@@ -1,0 +1,8 @@
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\bin\Debug\netstandard2.0\DataAccesslibrary.deps.json
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\bin\Debug\netstandard2.0\DataAccesslibrary.dll
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\bin\Debug\netstandard2.0\DataAccesslibrary.pdb
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\obj\Debug\netstandard2.0\DataAccesslibrary.csprojAssemblyReference.cache
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\obj\Debug\netstandard2.0\DataAccesslibrary.AssemblyInfoInputs.cache
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\obj\Debug\netstandard2.0\DataAccesslibrary.AssemblyInfo.cs
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\obj\Debug\netstandard2.0\DataAccesslibrary.dll
+C:\Users\GKHEDEKAR\source\repos\WebApiToDo\DataAccesslibrary\obj\Debug\netstandard2.0\DataAccesslibrary.pdb

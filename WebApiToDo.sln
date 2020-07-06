@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiToDo", "WebApiToDo\WebApiToDo.csproj", "{BDA5E2A5-D7BA-47C4-875C-37160963A64C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccesslibrary", "DataAccesslibrary\DataAccesslibrary.csproj", "{3E3E70DA-936C-4C58-AB58-025255F26CBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDA5E2A5-D7BA-47C4-875C-37160963A64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA5E2A5-D7BA-47C4-875C-37160963A64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA5E2A5-D7BA-47C4-875C-37160963A64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA5E2A5-D7BA-47C4-875C-37160963A64C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3E70DA-936C-4C58-AB58-025255F26CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3E70DA-936C-4C58-AB58-025255F26CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3E70DA-936C-4C58-AB58-025255F26CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3E70DA-936C-4C58-AB58-025255F26CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AB579AE-3FBB-494E-9CDC-F3DD9A6DDB1A}
+	EndGlobalSection
+EndGlobal
