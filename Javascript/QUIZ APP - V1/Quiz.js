@@ -113,11 +113,12 @@ function startTimer() {
  function questionTimerFun() {
   //question timer
   //console.log("starttimer"+ timer[1] +"  "+timer[0]+" "+timer[2]);
-  var currentQuestionTime = padLeadingZero(questionTimer[0]) +":"+ padLeadingZero(questionTimer[1])
+  var currentQuestionTime =  padLeadingZero(questionTimer[1])
   questionTimerPara.innerText=" Question Timer : "+currentQuestionTime;
   questionTimer[2]++;
-  questionTimer[0]=Math.floor((questionTimer[3]/100)/60);
-  questionTimer[1] = Math.floor((questionTimer[3]/100) - (questionTimer[0] * 60));
+  questionTimer[0]=Math.floor((questionTimer[2]/100)/60);
+  questionTimer[1] = Math.floor((questionTimer[2]/100) - (questionTimer[0] * 60));
+  //questionTimer[1]=Math.floor(timer[2]  - (timer[0] * 6000));
 }
 function padLeadingZero(params) {
   if(+params<=9)
@@ -177,6 +178,7 @@ function checkAnswer(event){
   
 }
 
+setInterval(LoadNextQuestion,5000);
 
 //************* event binding section *********************/
 //bind the function to click event
