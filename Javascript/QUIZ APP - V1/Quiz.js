@@ -64,7 +64,7 @@ const progressBarElement=document.querySelector(".progressBarFull");
 const progressTextElement=document.querySelector(".progressText");
 const scoreTextElement=document.querySelector(".scoreContent p");
 const timerPara=document.querySelector(".timerRegion p");
-const questionTimerPara=document.querySelector(".questionTimer p");
+//const questionTimerPara=document.querySelector(".questionTimer p");
 
 var  lastQuestionAnswered;
 var score;
@@ -74,30 +74,32 @@ var timerIsRunning=false;
 var intervalQuestion;
 var intervalTimer;
 var intervalSingleQuestion;
+var timeoutSingleQuestion;
 //when window loads initialize the game
 
-lastQuestionAnswered=0;
+lastQuestionAnswered=-1;
 score=0;
 startGame();
 
 //start the game
 function startGame(){
-   progressBarElement.style.width=`${(lastQuestionAnswered/MAX_QUESTION)*100}%`;
-   progressTextElement.innerText=` Question ${lastQuestionAnswered} of ${MAX_QUESTION}`;
-  
-  questionElement.innerText=questionsArray[lastQuestionAnswered].question;
-  option1Element.innerText=questionsArray[lastQuestionAnswered].choice1;
-  option2Element.innerText=questionsArray[lastQuestionAnswered].choice2;
-  option3Element.innerText=questionsArray[lastQuestionAnswered].choice3;
-  option4Element.innerText=questionsArray[lastQuestionAnswered].choice4;
-
+  LoadNextQuestion();
   if(!timerIsRunning){
     timerIsRunning=true;
     intervalTimer=setInterval(startTimer,10);
   }
-  
-  intervalSingleQuestion=setInterval(questionTimerFun,10);
+  //intervalSingleQuestion=setInterval(questionTimerFun,10);
 }
+
+//setTimeout(LoadNextQuestion,5000);
+
+function resetQuestionTimer() {
+  var questionTimer=[0,0,0];
+  clearInterval(intervalSingleQuestion); //clear the question interval first
+  intervalSingleQuestion=setInterval(questionTimerFun,10); // set it back. so that clock starts from zero -TODO
+  LoadNextQuestion();
+}
+//this is global timer
 function startTimer() {
   //console.log("starttimer"+ timer[3] +"  "+timer[0]);
   var currentTime= padLeadingZero(timer[0]) +":"+ padLeadingZero(timer[1]) +":"+ padLeadingZero(timer[2]) ;
@@ -110,28 +112,33 @@ function startTimer() {
 
 }
 
- function questionTimerFun() {
+//this is for particular question
+function questionTimerFun() {
   //question timer
   //console.log("starttimer"+ timer[1] +"  "+timer[0]+" "+timer[2]);
   var currentQuestionTime =  padLeadingZero(questionTimer[1])
+  
   questionTimerPara.innerText=" Question Timer : "+currentQuestionTime;
   questionTimer[2]++;
   questionTimer[0]=Math.floor((questionTimer[2]/100)/60);
   questionTimer[1] = Math.floor((questionTimer[2]/100) - (questionTimer[0] * 60));
   //questionTimer[1]=Math.floor(timer[2]  - (timer[0] * 6000));
 }
+
 function padLeadingZero(params) {
   if(+params<=9)
     return "0"+params;
   else
     return params;
 }
+
 //load  the next question
 function LoadNextQuestion(){
+  lastQuestionAnswered++;
   clearInterval(intervalQuestion);
-  //lastQuestionAnswered++;
-   progressBarElement.style.width=`${(lastQuestionAnswered/MAX_QUESTION)*100}%`;
-   progressTextElement.innerText=` Question ${lastQuestionAnswered} of ${MAX_QUESTION}`;
+  console.log("LoadnextQuestion "+lastQuestionAnswered+"  "+ ((+lastQuestionAnswered+1)/MAX_QUESTION)*100);
+   progressBarElement.style.width=`${((+lastQuestionAnswered)/MAX_QUESTION)*100}%`;
+   progressTextElement.innerText=` Question ${lastQuestionAnswered+1} of ${MAX_QUESTION}`;
   if(lastQuestionAnswered < MAX_QUESTION){
   
     questionElement.innerText=questionsArray[lastQuestionAnswered].question;
@@ -140,7 +147,7 @@ function LoadNextQuestion(){
     option3Element.innerText=questionsArray[lastQuestionAnswered].choice3;
     option4Element.innerText=questionsArray[lastQuestionAnswered].choice4;
   }
-   
+  
 }
 
 //check the answer
@@ -170,15 +177,19 @@ function checkAnswer(event){
     },500);
   }
   if(lastQuestionAnswered==MAX_QUESTION-1){
-    progressBarElement.style.width=`${(lastQuestionAnswered+1/MAX_QUESTION)*100}%`;
+    console.log("checkAnswer "+lastQuestionAnswered);
+    progressBarElement.style.width=`${((+lastQuestionAnswered+1)/MAX_QUESTION)*100}%`;
     progressTextElement.innerText=` Question ${lastQuestionAnswered+1} of ${MAX_QUESTION}`;
     clearInterval(intervalTimer);
+    setInterval(function(){
+      document.location.href="End.html";
+    },1000);
   }
-  lastQuestionAnswered++;
+  //lastQuestionAnswered++;
   
 }
 
-setInterval(LoadNextQuestion,5000);
+//setInterval(LoadNextQuestion,5000);
 
 //************* event binding section *********************/
 //bind the function to click event
