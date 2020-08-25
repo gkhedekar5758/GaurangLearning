@@ -1,3 +1,4 @@
+//#region QuestionsStatic
 let questionsArray=[
     {
       "question": "Inside which HTML element do we put the JavaScript??",
@@ -51,7 +52,8 @@ let questionsArray=[
     }
   ];
 
-  
+//#endregion
+
 // how many question are there in the game
 const MAX_QUESTION=questionsArray.length;
 const SCORE_BONUS=10;
@@ -83,6 +85,8 @@ startGame();
 
 //start the game
 function startGame(){
+  window.localStorage.removeItem('currentScore');
+  window.localStorage.removeItem('currentTiming');
   LoadNextQuestion();
   if(!timerIsRunning){
     timerIsRunning=true;
@@ -136,7 +140,7 @@ function padLeadingZero(params) {
 function LoadNextQuestion(){
   lastQuestionAnswered++;
   clearInterval(intervalQuestion);
-  console.log("LoadnextQuestion "+lastQuestionAnswered+"  "+ ((+lastQuestionAnswered+1)/MAX_QUESTION)*100);
+  //console.log("LoadnextQuestion "+lastQuestionAnswered+"  "+ ((+lastQuestionAnswered+1)/MAX_QUESTION)*100);
    progressBarElement.style.width=`${((+lastQuestionAnswered)/MAX_QUESTION)*100}%`;
    progressTextElement.innerText=` Question ${lastQuestionAnswered+1} of ${MAX_QUESTION}`;
   if(lastQuestionAnswered < MAX_QUESTION){
@@ -177,12 +181,15 @@ function checkAnswer(event){
     },500);
   }
   if(lastQuestionAnswered==MAX_QUESTION-1){
-    console.log("checkAnswer "+lastQuestionAnswered);
+    //console.log("checkAnswer "+lastQuestionAnswered);
     progressBarElement.style.width=`${((+lastQuestionAnswered+1)/MAX_QUESTION)*100}%`;
     progressTextElement.innerText=` Question ${lastQuestionAnswered+1} of ${MAX_QUESTION}`;
     clearInterval(intervalTimer);
     setInterval(function(){
       document.location.href="End.html";
+      window.localStorage.setItem('currentScore',score);
+      //console.log(timerPara.innerText);
+      window.localStorage.setItem('currentTiming',timerPara.innerText.substr(8,timerPara.innerText.length));
     },1000);
   }
   //lastQuestionAnswered++;
